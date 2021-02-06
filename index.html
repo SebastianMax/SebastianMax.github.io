@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/weather-icons.min.css">
     <style>
         .content {
+          font-family:Arial, sans-serif;
           text-align: center;
           margin: auto; 
         }
@@ -30,6 +31,23 @@
           font-size: 5em;
         }
         
+        .tg  {
+          border-collapse:collapse;
+          border-spacing:0;
+          margin:0px auto;
+          font-size:5em;
+        }
+        .tg td {
+          border-color:transparent;
+          border-style:hidden;
+          overflow:hidden;
+          padding:10px 25px;
+          word-break:normal;
+        }
+        .tg .tg-0lax{
+          text-align:center;
+          vertical-align:top
+        }
     </style>
 
     <script type="text/javascript"></script>
@@ -41,18 +59,45 @@
     url: "https://api.openweathermap.org/data/2.5/weather?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce&lang=de"
 }).done(function (data) {
     var temp = (data.main.temp - 273.15).toFixed(0) + "°C";
-    var icon = 
     $("#current_temperature").text(temp);
     $("#current_icon").addClass("wi wi-owm-" + data.weather[0].id);
 
     var wind_direction = get_wind_direction(data.wind.deg);
     var wind_speed = (data.wind.speed*3.6).toFixed(1);
-    $("#current_wind").text(wind_speed + "km/h aus " + wind_direction);
+    $("#current_wind").text(wind_speed + "km/h (" + wind_direction + ")");
+});
+
+$.ajax({
+    type: "GET",
+    url: "http://api.openweathermap.org/data/2.5/forecast?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce&lang=de"
+}).done(function (data) {
+    var prediction_temp = (data.list[0].main.temp - 273.15).toFixed(0) + "°C";
+    $("#prediction_1").text(prediction_temp);
+    $("#prediction_icon_1").addClass("wi wi-owm-" + data.list[0].weather[0].id);
+
+    prediction_temp = (data.list[1].main.temp - 273.15).toFixed(0) + "°C";
+    $("#prediction_2").text(prediction_temp);
+    $("#prediction_icon_2").addClass("wi wi-owm-" + data.list[1].weather[0].id);
+
+    prediction_temp = (data.list[2].main.temp - 273.15).toFixed(0) + "°C";
+    $("#prediction_3").text(prediction_temp);
+    $("#prediction_icon_3").addClass("wi wi-owm-" + data.list[2].weather[0].id);
 });
     </script>
   <div class="content">
     <i id="current_icon"> <span id="current_temperature"></span></i>
     <div id="current_wind"></div>
+  
+  
+    <table class="tg">
+    <tbody>
+      <tr>
+        <td class="tg-0lax"><i id="prediction_icon_1"><div id="prediction_1"></div></i></td>
+        <td class="tg-0lax"><i id="prediction_icon_2"><div id="prediction_2"></div></i></td>
+        <td class="tg-0lax"><i id="prediction_icon_3"><div id="prediction_3"></div></i></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
   </body>
 </html>
