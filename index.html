@@ -6,8 +6,15 @@
     <meta http-equiv="refresh" content="1800"></meta>
     <title>Wetter</title>
     
+    <style>
+        
+        #weather{
+            transform: rotate(-90deg) scale(3);
+        }
+        
+    </style>
   </head>
   <body>
-    <iframe marginheight='0' marginwidth='0' scrolling='no' width='300' height='255' name='FC1' style='border:1px solid;border-color:#00537f;' src='https://api.wetteronline.de/wetterwidget?gid=10513&modeid=FC1&seourl=koeln&locationname=Köln&lang=de'></iframe>
+    <iframe id="weather" marginheight='0' marginwidth='0' scrolling='no' width='300' height='255' name='FC1' style='border:1px solid;border-color:#00537f;' src='https://api.wetteronline.de/wetterwidget?gid=10513&modeid=FC1&seourl=koeln&locationname=Köln&lang=de'></iframe>
   </body>
 </html>
