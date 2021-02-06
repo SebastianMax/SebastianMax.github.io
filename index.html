@@ -8,7 +8,9 @@
     
     <style>
         * {margin:0;}
-        iframe {
+        span {
+        position: absolute;
+        top: 50%; right: 50%;
         -webkit-transform: scale(2);
         transform: scale(2);
         }
@@ -16,10 +18,10 @@
     </style>
   </head>
   <body>
-    
+    <span>
         <!-- <iframe marginheight='0' marginwidth='0' scrolling='no' width='300' height='255' name='FC1' style='border:1px solid;border-color:#00537f;' src='https://api.wetteronline.de/wetterwidget?gid=10513&modeid=FC1&seourl=koeln&locationname=Köln&lang=de'></iframe> -->
         <!-- <div id="cont_4de45537ff22785e81bcd2676d6aa9ac"><script type="text/javascript" async src="https://www.theweather.com/wid_loader/4de45537ff22785e81bcd2676d6aa9ac"></script></div> -->
-        <iframe scrolling='no' width='360' height='500' src='https://www.nippes-wetter.de/PWA_Aktualisierung.php'></iframe>
-    
+        <iframe marginheight='0' marginwidth='0' scrolling='no' width='360' height='400' src='https://www.nippes-wetter.de/PWA_Aktualisierung.php'></iframe>
+    </span>
   </body>
 </html>
