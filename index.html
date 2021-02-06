@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="3600"></meta>
+    <meta http-equiv="refresh" content="300"></meta>
     <title>Wetter</title>
 
     <script
@@ -13,14 +13,9 @@
     
     <style>
         * {margin:0;}
-        span {
-        position: absolute;
-        top: 0; left: 0;
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        }
-
-        #current_temperature {
+        .content {
+          max-width: 500px;
+          margin: auto;
           font-size: 10em;
         }
         
@@ -30,13 +25,55 @@
     <script type="text/javascript">
       $.ajax({
     type: "GET",
-    url: "https://api.openweathermap.org/data/2.5/weather?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce"
+    url: "https://api.openweathermap.org/data/2.5/weather?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce&lang=de"
 }).done(function (data) {
     var temp = (data.main.temp - 273.15).toFixed(1) + "°C";
     $("#current_temperature").text(temp);
+
+    var wind_direction = data.wind.deg;
+    if(wind_direction < 11.25) {
+      wind_direction = "N";
+    } else if(wind_direction < 33.75) {
+      wind_direction = "NNO";
+    } else if(wind_direction < 56.25) {
+      wind_direction = "NO";
+    } else if(wind_direction < 78.75) {
+      wind_direction = "ONO";
+    } else if(wind_direction < 101.25) {
+      wind_direction = "O";
+    } else if(wind_direction < 123.75) {
+      wind_direction = "OSO";
+    } else if(wind_direction < 146.25) {
+      wind_direction = "SO";
+    } else if(wind_direction < 168.75) {
+      wind_direction = "SSO";
+    } else if(wind_direction < 191.25) {
+      wind_direction = "S";
+    } else if(wind_direction < 213.75) {
+      wind_direction = "SSW";
+    } else if(wind_direction < 236.25) {
+      wind_direction = "SW";
+    } else if(wind_direction < 258.75) {
+      wind_direction = "WSW";
+    } else if(wind_direction < 281.25) {
+      wind_direction = "W";
+    } else if(wind_direction < 303.75) {
+      wind_direction = "WNW";
+    } else if(wind_direction < 326.25) {
+      wind_direction = "NW";
+    } else if(wind_direction < 348.75) {
+      wind_direction = "NNW";
+    } else {
+      wind_direction = "N";
+    }
+   
+    var wind_speed = (data.wind.speed*3.6).toFixed(1);
+    $("#current_wind").text(wind_speed + "km/h aus " + wind_direction);
 });
     </script>
-
-  <div id="current_temperature"></div>
+  <div class="content">
+    <div id="current_temperature"></div>
+    <div id="current_wind"></div>
+</div>
   </body>
 </html>
