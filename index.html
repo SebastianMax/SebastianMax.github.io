@@ -20,11 +20,6 @@
           margin: auto; 
         }
 
-        #clock {
-          transform: scale(2);
-          -webkit-transform: scale(2);
-        }
-
         #current {
           padding-top: 100px;
         }
@@ -80,14 +75,17 @@ $.ajax({
     var prediction_temp = (data.list[0].main.temp - 273.15).toFixed(0) + "°C";
     $("#prediction_1").text(prediction_temp);
     $("#prediction_icon_1").addClass("wi wi-owm-" + data.list[0].weather[0].id);
+    $("#prediction_rain_1").text(data.list[0].pop * 100 + "%");
 
     prediction_temp = (data.list[1].main.temp - 273.15).toFixed(0) + "°C";
     $("#prediction_2").text(prediction_temp);
     $("#prediction_icon_2").addClass("wi wi-owm-" + data.list[1].weather[0].id);
+    $("#prediction_rain_2").text(data.list[1].pop * 100 + "%");
 
     prediction_temp = (data.list[2].main.temp - 273.15).toFixed(0) + "°C";
     $("#prediction_3").text(prediction_temp);
     $("#prediction_icon_3").addClass("wi wi-owm-" + data.list[2].weather[0].id);
+    $("#prediction_rain_3").text(data.list[2].pop * 100 + "%");
 });
     </script>
   <div class="content">
@@ -101,9 +99,9 @@ $.ajax({
     <table class="prediction">
     <tbody>
       <tr>
-        <td class="tg-0lax"><i id="prediction_icon_1"><div id="prediction_1"></div></i></td>
-        <td class="tg-0lax"><i id="prediction_icon_2"><div id="prediction_2"></div></i></td>
-        <td class="tg-0lax"><i id="prediction_icon_3"><div id="prediction_3"></div></i></td>
+        <td class="tg-0lax"><i id="prediction_icon_1"><div id="prediction_1"></div><div id="prediction_rain_1"></div></i></td>
+        <td class="tg-0lax"><i id="prediction_icon_2"><div id="prediction_2"></div><div id="prediction_rain_2"></div></i></td>
+        <td class="tg-0lax"><i id="prediction_icon_3"><div id="prediction_3"></div><div id="prediction_rain_3"></div></i></td>
       </tr>
     </tbody>
     </table>
