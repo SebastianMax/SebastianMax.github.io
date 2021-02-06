@@ -7,14 +7,20 @@
     <title>Wetter</title>
     
     <style>
-        
-        #weather{
-            transform: rotate(-90deg) scale(3);
+        * {margin:0;}
+        span {
+        position: absolute;
+        top: 50%; right: 50%;
+        transform: translate(50%,-50%) rotate(-90deg) scale(3);
+        background: black;
+        color: white;
         }
         
     </style>
   </head>
   <body>
-    <iframe id="weather" marginheight='0' marginwidth='0' scrolling='no' width='300' height='255' name='FC1' style='border:1px solid;border-color:#00537f;' src='https://api.wetteronline.de/wetterwidget?gid=10513&modeid=FC1&seourl=koeln&locationname=Köln&lang=de'></iframe>
+    <span>
+        <iframe id="weather" marginheight='0' marginwidth='0' scrolling='no' width='300' height='255' name='FC1' style='border:1px solid;border-color:#00537f;' src='https://api.wetteronline.de/wetterwidget?gid=10513&modeid=FC1&seourl=koeln&locationname=Köln&lang=de'></iframe>
+    </span>
   </body>
 </html>
