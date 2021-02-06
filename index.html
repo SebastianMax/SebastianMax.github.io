@@ -16,7 +16,15 @@
         .content {
           text-align: center;
           margin: auto;
+          
+        }
+
+        #current_temperature {
           font-size: 10em;
+        }
+
+        #current_wind {
+          font-size: 5em;
         }
         
     </style>
@@ -26,6 +34,7 @@
       $.ajax({
     type: "GET",
     url: "https://api.openweathermap.org/data/2.5/weather?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce&lang=de"
+
 }).done(function (data) {
     var temp = (data.main.temp - 273.15).toFixed(1) + "°C";
     $("#current_temperature").text(temp);
