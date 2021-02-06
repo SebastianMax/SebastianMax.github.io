@@ -19,6 +19,10 @@
         -webkit-transform: scale(1);
         transform: scale(1);
         }
+
+        #current_temperature {
+          font-size: 10em;
+        }
         
     </style>
   </head>
@@ -28,7 +32,7 @@
     type: "GET",
     url: "https://api.openweathermap.org/data/2.5/weather?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce"
 }).done(function (data) {
-    var temp = Math.round((data.main.temp - 273.15) * 10) / 10
+    var temp = (data.main.temp - 273.15).toFixed(1) + "°C";
     $("#current_temperature").text(temp);
 });
     </script>
