@@ -20,6 +20,10 @@
           margin: auto; 
         }
 
+        #current {
+          padding-top: 100px;
+        }
+
         #current_icon {
           font-size: 10em;
         }
@@ -28,20 +32,20 @@
           font-size: 5em;
         }
         
-        .tg  {
+        .prediction  {
           border-collapse:collapse;
           border-spacing:0;
           margin:0px auto;
           font-size:5em;
         }
-        .tg td {
+        .prediction td {
           border-color:transparent;
           border-style:hidden;
           overflow:hidden;
-          padding:10px 25px;
+          padding:100px 25px;
           word-break:normal;
         }
-        .tg .tg-0lax{
+        .prediction .tg-0lax{
           text-align:center;
           vertical-align:top
         }
@@ -83,9 +87,11 @@ $.ajax({
     </script>
   <div class="content">
     <iframe src="http://free.timeanddate.com/clock/i7o16m0g/n311/tlde3/fs48/tt0/tw0/tm1/th1/ts1/tb1" frameborder="0" width="435" height="57"></iframe>
-    <div><i id="current_icon"> <span id="current_temperature"></span></i></div>
-    <div id="current_wind"></div>
-    <table class="tg">
+    <div id="current">
+      <i id="current_icon"> <span id="current_temperature"></span></i></div>
+      <div id="current_wind"></div>
+    </div>
+    <table class="prediction">
     <tbody>
       <tr>
         <td class="tg-0lax"><i id="prediction_icon_1"><div id="prediction_1"></div></i></td>
