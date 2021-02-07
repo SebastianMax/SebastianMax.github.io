@@ -18,8 +18,8 @@ function update() {
         var daylight_h = Math.floor(daylight / 1000 / 60 / 60);
         var daylight_min = Math.floor(daylight / 1000 / 60 % 60);
 
-        $("#sunrise").text(sunrise.toLocaleTimeString().slice(0, -3));
-        $("#sunset").text(sunset.toLocaleTimeString().slice(0, -3));
+        $("#sunrise").text(sunrise.toLocaleTimeString("de-DE", {timeZone: "Europe/Berlin"}).slice(0, -3));
+        $("#sunset").text(sunset.toLocaleTimeString("de-DE", {timeZone: "Europe/Berlin"}).slice(0, -3));
         $("#daylight").text(daylight_h + "h " + daylight_min + "min");
     });
     
