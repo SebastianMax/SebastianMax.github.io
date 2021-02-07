@@ -1,0 +1,35 @@
+.content {
+    font-family:Arial, sans-serif;
+    text-align: center;
+    margin: auto; 
+  }
+
+  #current {
+    padding-top: 100px;
+  }
+
+  #current_icon {
+    font-size: 10em;
+  }
+
+  #current_wind {
+    font-size: 5em;
+  }
+  
+  .prediction  {
+    border-collapse:collapse;
+    border-spacing:0;
+    margin:0px auto;
+    font-size:5em;
+  }
+  .prediction td {
+    border-color:transparent;
+    border-style:hidden;
+    overflow:hidden;
+    padding:100px 25px;
+    word-break:normal;
+  }
+  .prediction .tg-0lax{
+    text-align:center;
+    vertical-align:top
+  }

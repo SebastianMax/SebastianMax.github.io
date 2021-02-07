@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="600"></meta>
     <title>Wetter</title>
 
     <script
@@ -11,82 +10,15 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"></script>
     <script src="wind_direction.js"></script>
+    <script src="update.js"></script>
 
     <link rel="stylesheet" href="css/weather-icons.min.css">
-    <style>
-        .content {
-          font-family:Arial, sans-serif;
-          text-align: center;
-          margin: auto; 
-        }
-
-        #current {
-          padding-top: 100px;
-        }
-
-        #current_icon {
-          font-size: 10em;
-        }
-
-        #current_wind {
-          font-size: 5em;
-        }
-        
-        .prediction  {
-          border-collapse:collapse;
-          border-spacing:0;
-          margin:0px auto;
-          font-size:5em;
-        }
-        .prediction td {
-          border-color:transparent;
-          border-style:hidden;
-          overflow:hidden;
-          padding:100px 25px;
-          word-break:normal;
-        }
-        .prediction .tg-0lax{
-          text-align:center;
-          vertical-align:top
-        }
-    </style>
-
-    <script type="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <script type="text/javascript">
-      $.ajax({
-    type: "GET",
-    url: "https://api.openweathermap.org/data/2.5/weather?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce&lang=de"
-}).done(function (data) {
-    var temp = (data.main.temp - 273.15).toFixed(1) + "°C";
-    $("#current_temperature").text(temp);
-    $("#current_icon").addClass("wi wi-owm-" + data.weather[0].id);
-
-    var wind_direction = get_wind_direction(data.wind.deg);
-    var wind_speed = (data.wind.speed*3.6).toFixed(1);
-    $("#current_wind").text(wind_speed + "km/h (" + wind_direction + ")");
-});
-
-$.ajax({
-    type: "GET",
-    url: "https://api.openweathermap.org/data/2.5/forecast?zip=50737,DE&appid=02ee4bca37e17064be5008c73ff486ce&lang=de"
-}).done(function (data) {
-    var prediction_temp = (data.list[0].main.temp - 273.15).toFixed(0) + "°C";
-    $("#prediction_1").text(prediction_temp);
-    $("#prediction_icon_1").addClass("wi wi-owm-" + data.list[0].weather[0].id);
-    $("#prediction_rain_1").text(data.list[0].pop * 100 + "%");
-
-    prediction_temp = (data.list[1].main.temp - 273.15).toFixed(0) + "°C";
-    $("#prediction_2").text(prediction_temp);
-    $("#prediction_icon_2").addClass("wi wi-owm-" + data.list[1].weather[0].id);
-    $("#prediction_rain_2").text(data.list[1].pop * 100 + "%");
-
-    prediction_temp = (data.list[2].main.temp - 273.15).toFixed(0) + "°C";
-    $("#prediction_3").text(prediction_temp);
-    $("#prediction_icon_3").addClass("wi wi-owm-" + data.list[2].weather[0].id);
-    $("#prediction_rain_3").text(data.list[2].pop * 100 + "%");
-});
+      update();
+      setInterval(update, 1000*30);
     </script>
   <div class="content">
     <div id="current">
