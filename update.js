@@ -12,14 +12,14 @@ function update() {
         var wind_speed = (data.wind.speed*3.6).toFixed(1);
         $("#current_wind").text(wind_speed + "km/h (" + wind_direction + ")");
 
-        var sunrise = new Date(data.sys.sunrise * 1000);
-        var sunset = new Date(data.sys.sunset * 1000);
+        var sunrise = new Date(data.sys.sunrise * 1000 + data.timezone * 1000);
+        var sunset = new Date(data.sys.sunset * 1000 + data.timezone * 1000);
         var daylight = sunset - sunrise;
         var daylight_h = Math.floor(daylight / 1000 / 60 / 60);
         var daylight_min = Math.floor(daylight / 1000 / 60 % 60);
 
-        $("#sunrise").text(sunrise.toLocaleTimeString("de-DE", {timeZone: "Europe/Berlin"}).slice(0, -3));
-        $("#sunset").text(sunset.toLocaleTimeString("de-DE", {timeZone: "Europe/Berlin"}).slice(0, -3));
+        $("#sunrise").text(sunrise.getHours() + ":" + sunrise.getMinutes());
+        $("#sunset").text(sunset.getHours() + ":" + sunset.getMinutes());
         $("#daylight").text(daylight_h + "h " + daylight_min + "min");
     });
     
