@@ -15,6 +15,10 @@
   #current_wind {
     font-size: 100px;
   }
+
+  #qod {
+      font-size: 50px;
+  }
   
   .prediction  {
     border-collapse:collapse;

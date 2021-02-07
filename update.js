@@ -32,4 +32,11 @@ function update() {
         $("#prediction_icon_3").attr('class', "wi wi-owm-" + data.list[2].weather[0].id);
         $("#prediction_rain_3").text(data.list[2].pop * 100 + "%");
     });
+
+    $.ajax({
+        type: "GET",
+        url: "https://quotes.rest/qod?language=en"
+    }).done(function(data) {
+        $("#qod").text(data.contents.quotes[0].quote);
+    });
 }
