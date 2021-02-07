@@ -9,18 +9,18 @@
   }
 
   #current_icon {
-    font-size: 10em;
+    font-size: 200px;
   }
 
   #current_wind {
-    font-size: 5em;
+    font-size: 100px;
   }
   
   .prediction  {
     border-collapse:collapse;
     border-spacing:0;
     margin:0px auto;
-    font-size:5em;
+    font-size:100px;
   }
   .prediction td {
     border-color:transparent;
