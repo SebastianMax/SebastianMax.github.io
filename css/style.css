@@ -1,26 +1,28 @@
 .content {
-    font-family:Arial, sans-serif;
+    font-family:sans-serif;
     text-align: center;
     margin: auto; 
+    font-size: 100px;
   }
 
   #current {
-    padding-top: 100px;
-  }
-
-  #current_icon {
+    padding-top: 20px;
     font-size: 200px;
   }
 
   #current_wind {
-    font-size: 100px;
+    padding-top: 30px;
   }
+
+  #sun {
+    padding-top: 100px;
+  }
+
   
   .prediction  {
     border-collapse:collapse;
     border-spacing:0;
     margin:0px auto;
-    font-size:100px;
   }
   .prediction td {
     border-color:transparent;
