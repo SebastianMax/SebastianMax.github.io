@@ -11,15 +11,18 @@
       crossorigin="anonymous"></script>
     <script src="wind_direction.js"></script>
     <script src="update.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("load", function(){
+      update();
+      setInterval(update, 1000*10);
+    });
+    </script>
 
     <link rel="stylesheet" href="css/weather-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <script type="text/javascript">
-      update();
-      setInterval(update, 1000*10);
-    </script>
+    
   <div class="content">
     <div id="current">
       <i id="current_icon"> <span id="current_temperature"></span></i></div>
